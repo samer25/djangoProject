@@ -1,0 +1,48 @@
+{% extends 'common/site.html' %}
+{% load static %}
+{% block site_content %}
+<div class="body">
+
+
+    <div>
+        <h1>Summary</h1>
+        <h1>
+            <ul class="expenses-list">
+                <li class="blue">1500$</li>
+
+                <li class="red"> - 1000.0$</li>
+
+                <li class="red"> - 400.0$</li>
+
+                <li class="green">= 100.0$ left</li>
+            </ul>
+        </h1>
+    </div>
+    <button> <a href="{% url 'create' %}">Add</a></button>
+    <h1>My Expenses</h1>
+
+
+    <div class="expenses-container">
+        {% for ex in expense %}
+        <div class="expense-container">
+            <h2>{{ ex.title }}</h2>
+            <hr>
+            <img src="{{ ex.image_url }}">
+            <p>{{ ex.description }}</p>
+            <div class="expense-detail">
+                <div>
+                    <p>Price: {{ ex.price }}$</p>
+                </div>
+                <div class="right">
+                    <button class="edit"><a href="{% url 'edit' %}">Edit</a></button>
+                    <button class="delete"><a href="{% url 'delete' ex.id%}">Delete</a></button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+</div>
+{% endblock %}

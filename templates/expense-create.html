@@ -1,0 +1,26 @@
+{% extends 'common/site.html' %}
+{% block title %}Expense Create{% endblock %}
+
+
+{% block site_content %}
+    <div class="body">
+
+        <h1>Create Expense</h1>
+        <div class="form">
+            <form method="POST">
+              {% csrf_token %}
+                <label for="name">Title</label>
+                {{ form.title }}
+                <label for="description">Description</label>
+                {{ form.description }}
+                <label for="imageUrl">Link to Image</label>
+                {{ form.image_url }}
+                <label for="price">Price</label>
+                {{ form.price }}
+
+                <input type="submit" value="Create">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

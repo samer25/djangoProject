@@ -1,0 +1,28 @@
+{% extends 'common/site.html' %}
+{% load static %}
+{% block title %} Profile {% endblock %}
+
+{% block site_content %}
+    <div class="body">
+
+        <h1>Your Profile</h1>
+        <div class="expenses-container">
+            <div class="expense-container">
+                <h2>{{ user.first_name }}</h2>
+                <hr>
+                <img src="{% static 'images/user.png' %}">
+                <p>In your profile you can edit your profile data</p>
+                <div class="expense-detail">
+                    <div>
+                        <p>Budget Left: {{ user.budget }}$</p>
+                    </div>
+                    <div class="right">
+                        <button><a class="button edit" href="{% url 'profile edit' user.id%}">Edit Profile</a></button>
+                        <button><a class="button delete" href="{% url 'profile delete' %}">Delete Profile</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
